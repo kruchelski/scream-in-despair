@@ -2,36 +2,32 @@
 
 const TwitterClient = require('../config/Twitter')
 const TweetHelper = require('../helpers/TweetHelper')
+const Logger = require('../helpers/Logger')
 
-let tries = 0
+let attempts = 0
 
-module.exports.handler = async (event, context) => {
+const postTweet = async () => {
   try {
-    const status = TweetHelper.generateShout()
+    attempts++
+    if (attempts > 3) throw new Error('Reached maximum number of attempts')
 
+    const status = TweetHelper.generateShout()
+  
     const tweetResponse = await TwitterClient.post(
       'statuses/update',
       { status }
     )
-
-    console.log('Tweet posted! 🦜')
-    console.log(tweetResponse.text)
-  } catch (error) {
-    tries++
-
-    let errorMsg = 'Unexpected error'
-    if (error.message) {
-      errorMsg = error.message
-    } else if (error && error[0] && error[0].message) {
-      errorMsg = error[0].message
-    }
-
-    console.error(errorMsg, error, `tries: ${tries}`)
     
-    if (error && error[0] && error[0].code === 187 && tries < 3) {
-      this.handler(event, context)
-    } else if (tries >= 3) {
-      console.error('Reached maximum number of attempts')
+    Logger.handleLog('info', 'postTweet', 'Tweet posted! 🦜')
+    Logger.handleLog('info', 'postTweet', tweetResponse.text)
+  } catch (error) {
+    Logger.handleLog('error', 'postTweet', error, attempts)
+    if (error && error[0] && error[0].code === 187) {
+      await postTweet()
     }
   }
+}
+
+module.exports.handler = async (event, context) => {
+  await postTweet()
 }

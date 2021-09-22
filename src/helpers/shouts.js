@@ -59,7 +59,7 @@ const shouts = {
 
 const greenShouts = {
   0: 'Iiiiiiiiiiihhhhh cuzauummm',
-  1: 'IIIIIIIIIHHHHHHHH VAI CAÏ MANO',
+  1: 'IIIIIIIIIHHHHHHHH VAI CAÍ MANO',
   2: 'olha a hora 👀',
   4: 'salve salve',
   5: 'kkkkkk kkkk kk kk kkkk',
