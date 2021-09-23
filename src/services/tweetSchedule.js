@@ -9,10 +9,14 @@ let attempts = 0
 const postTweet = async () => {
   try {
     attempts++
-    if (attempts > 3) throw new Error('Reached maximum number of attempts')
+    if (attempts > 5) throw new Error('Reached maximum number of attempts')
+    let withEmoji = false
+    if (attempts > 3) {
+      withEmoji = true
+    }
 
-    const status = TweetHelper.generateShout()
-  
+    const status = TweetHelper.generateShout(withEmoji)
+
     const tweetResponse = await TwitterClient.post(
       'statuses/update',
       { status }

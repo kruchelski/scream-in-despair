@@ -57,7 +57,12 @@ const greenShouts = [
   'SHIiiiiiiiiit'
 ]
 
+const fallbackEmojis = [
+  '😱', '🦜', '🐳,', '🤙', '👀', '🥵', '😠', '🗣', '🙀', '👾', '😾', '👌', '🐣', '🍍', '🎳', '🗜', '🛠', '🩸', '🌀'
+]
+
 module.exports = {
   shouts,
-  greenShouts
+  greenShouts,
+  fallbackEmojis
 }

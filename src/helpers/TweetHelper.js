@@ -1,4 +1,5 @@
 const shoutHelper = require('./shouts')
+const LoggerHelper = require('./Logger')
 
 const isGreenTime = (date) => {
   const hour = date.getHours()
@@ -12,11 +13,18 @@ const getShoutType = (date) => {
   return shoutsType
 }
 
-const generateShout = () => {
+const generateShout = (emoji = false) => {
   const shoutList = getShoutType(new Date())
   const max = shoutList.length
   const shoutIndex = Math.floor(Math.random() * max)
-  return shoutList[shoutIndex]
+  let generatedShout = shoutList[shoutIndex]
+  if (emoji) {
+    const maxEmojiIndex = shoutHelper.fallbackEmojis.length
+    const emojiIndex = Math.floor(Math.random() * maxEmojiIndex)
+    generatedShout += ` ${shoutHelper.fallbackEmojis[emojiIndex]}`
+  }
+  LoggerHelper.handleLog('info', 'generateShout', `Shout: ${generatedShout}`)
+  return generatedShout
 }
 
 module.exports = {
