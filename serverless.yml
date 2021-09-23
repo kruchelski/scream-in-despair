@@ -29,3 +29,10 @@ functions:
     description: Function to tweet a shout message based on a schedule
     events:
       - schedule: cron(20 * * * ? *)
+
+  tweetMention:
+    handler: src/services/tweetMention.handler
+    description: Interacts with mentions
+    timeout: 30
+    events:
+      - schedule: rate(1 minute)

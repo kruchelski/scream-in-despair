@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/github/license/kruchelski/scream-in-despair?labelColor=0f21a1&color=777777" alt="Project License" />
 </p>
 
-#### Important Note: This is a Work in Progress. At this moment only the scheduled function is working and not the function to interact with mention
+#### Important Note: This is a Work in Progress. At this moment some bugs may occur
 
 #### Important Note 2: This project was done for studying purposes. The idea was based in the [endless screaming Twitter profile](https://twitter.com/infinite_scream)
 
@@ -28,7 +28,7 @@ This project was made for studying purposes. The objective is to explore the Lam
 The bot is very simple, it consists in two main Lambda functions:   
 
 1. tweetSchedule: Every hour and 20 minutes it will post an update to status based in some random functions to generate the tweet
-2. tweetMention: Every 30 seconds it will retrieve the mentions and then reply to them with random screams. **This function is not implemented yet**
+2. tweetMention: Every 1 minute it will retrieve the mentions and then reply to them with random screams.
 
 
 ### 🖥 How do these stuff work?

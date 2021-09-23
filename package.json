@@ -1,6 +1,6 @@
 {
   "name": "scream-in-despair",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "A twitter bot that scream random stuff from time to time and/or replies to users",
   "main": "handler.js",
   "dependencies": {

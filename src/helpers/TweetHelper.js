@@ -14,7 +14,7 @@ const getShoutType = (date) => {
 
 const generateShout = () => {
   const shoutList = getShoutType(new Date())
-  const max = Object.keys(shoutList).length
+  const max = shoutList.length
   const shoutIndex = Math.floor(Math.random() * max)
   return shoutList[shoutIndex]
 }
